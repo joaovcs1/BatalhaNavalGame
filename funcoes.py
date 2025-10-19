@@ -19,12 +19,14 @@ def preenche_frota(dicio, navio, linha, coluna, orientacao, tamanho):
     dicio[navio].append(navio_cor)
 
     return dicio
+
 def faz_jogada (tabuleiro,linha,coluna):
     if tabuleiro[linha][coluna] == 1:
         tabuleiro[linha][coluna] = 'X'
     else:
         tabuleiro[linha][coluna] = '-'
     return tabuleiro
+
 def posiciona_frota (dicio):
     tabuleiro = []
     for i in range(10):
@@ -37,6 +39,7 @@ def posiciona_frota (dicio):
             
                 tabuleiro[linha][coluna] = 1
     return tabuleiro
+
 def afundados(dicio,tabuleiro):
     conta = 0
     for navios, posicoes in dicio.items():
