@@ -12,6 +12,10 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
     return opcoes
 
 def preenche_frota(dicio, navio, linha, coluna, orientacao, tamanho):
-    dicio[f'{navio}'] = define_posicoes(linha, coluna, orientacao, tamanho)
+    navio_cor = define_posicoes(linha, coluna, orientacao, tamanho)
+    
+    if navio not in dicio:
+        dicio[navio] = []
+    dicio[navio].append(navio_cor)
 
     return dicio
