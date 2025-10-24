@@ -61,20 +61,19 @@ def afundados(dicio, tabuleiro):
 
 #Verifica se a jogada é possível
 def posicao_valida(frota, linha, coluna, orientacao, tamanho):
-    posicao = define_posicoes(linha, coluna, orientacao, tamanho)
-    verificador = 0
-    quantia_coord = 0
-    for cont in posicao:
-        quantia_coord += 1
+    novas_posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
 
-    for coordernadas in posicao:
-        for posicoes in frota.values():
-            for coord2 in posicoes:
-                if coord2 == coordernadas:
-                    verificador += 1
+    for posicao_nova in novas_posicoes:
+        linha = posicao_nova[0]
+        coluna = posicao_nova[1]
 
-    if verificador == quantia_coord:
-        return True
-    else:
-        return False
+        if not (0 <= linha <= 9 and 0 <= coluna <= 9):
+            return False
+
+        for lista_navios in frota.values():
+            for navio in lista_navios:
+                for posicao in navio:
+                    if posicao_nova == posicao:
+                        return False
     
+    return True
