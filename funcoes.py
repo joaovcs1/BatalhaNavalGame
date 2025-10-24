@@ -1,3 +1,4 @@
+#Cria função que diz todas as coordenadas da embarcação
 def define_posicoes(linha, coluna, orientacao, tamanho):
     pos_inicial = [linha, coluna]
     opcoes = []
@@ -11,6 +12,7 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
 
     return opcoes
 
+#Armazena as coordenadas num dicionário
 def preenche_frota(dicio, navio, linha, coluna, orientacao, tamanho):
     navio_cor = define_posicoes(linha, coluna, orientacao, tamanho)
     
@@ -20,6 +22,7 @@ def preenche_frota(dicio, navio, linha, coluna, orientacao, tamanho):
 
     return dicio
 
+#Marca um X se a coordenada pertence a alguma embarcação
 def faz_jogada (tabuleiro,linha,coluna):
     if tabuleiro[linha][coluna] == 1:
         tabuleiro[linha][coluna] = 'X'
@@ -27,7 +30,8 @@ def faz_jogada (tabuleiro,linha,coluna):
         tabuleiro[linha][coluna] = '-'
     return tabuleiro
 
-def posiciona_frota (dicio):
+#Preenche o grid com os navios do dicionário
+def posiciona_frota(dicio):
     tabuleiro = []
     for i in range(10):
         tabuleiro.append([0]* 10)
@@ -40,7 +44,8 @@ def posiciona_frota (dicio):
                 tabuleiro[linha][coluna] = 1
     return tabuleiro
 
-def afundados(dicio,tabuleiro):
+#Mostra quantidade de embarcações afundadas
+def afundados(dicio, tabuleiro):
     conta = 0
     for navios, posicoes in dicio.items():
         for posicao in posicoes:
@@ -53,4 +58,23 @@ def afundados(dicio,tabuleiro):
             if afundado == True:
                 conta += 1
     return conta
+
+#Verifica se a jogada é possível
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicao = define_posicoes(linha, coluna, orientacao, tamanho)
+    verificador = 0
+    quantia_coord = 0
+    for cont in posicao:
+        quantia_coord += 1
+
+    for coordernadas in posicao:
+        for posicoes in frota.values():
+            for coord2 in posicoes:
+                if coord2 == coordernadas:
+                    verificador += 1
+
+    if verificador == quantia_coord:
+        return True
+    else:
+        return False
     
