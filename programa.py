@@ -20,32 +20,25 @@ for navio, definicao in definicao_frota.items():
     tamanho = definicao[1]
 
     for i in range(quantidade):
-        print(f'Insira as informações referentes ao navio {navio} que possui tamanho {tamanho}')
+        
         continua = False
         while continua is False:
+            print(f'Insira as informações referentes ao navio {navio} que possui tamanho {tamanho}')
             insere_linha = int(input('Linha: '))
             insere_coluna = int(input('Coluna: '))
             
             orientacao = 'vertical'
 
-            if navio =! 'submarino':
+            if navio != 'submarino':
                 orientacao = int(input('Orientação: digite 1 para vertical e 2 para horizontal '))
                 if orientacao == 1:
                     orientacao = 'vertical'
                 elif orientacao == 2:
                     orientacao = 'horizontal'
             
-            if posicao_valida(insere_linha, insere_coluna, orientacao, tamanho):
-                preenche_frota(frota,navio, insere_linha, insere_coluna, orientacao)
+            if posicao_valida(frota,insere_linha, insere_coluna, orientacao, tamanho):
+                preenche_frota(frota,navio, insere_linha, insere_coluna, orientacao, tamanho)
                 continua = True
                 
             else:
                 print('Esta posição não está válida!')
-
-print(frota)
-            
-
-
-
-
-
