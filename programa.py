@@ -81,7 +81,7 @@ while jogando:
 
     linha_valida = False
     while not linha_valida:
-        linha_ataque = int(input('Linha de ataque: '))
+        linha_ataque = int(input('Linha: ')) 
         if 0 <= linha_ataque <= 9:
             linha_valida = True
         else:
@@ -89,7 +89,7 @@ while jogando:
 
     coluna_valida = False
     while not coluna_valida:
-        coluna_ataque = int(input('Coluna de ataque: '))
+        coluna_ataque = int(input('Coluna: ')) 
         if 0 <= coluna_ataque <= 9:
             coluna_valida = True
         else:
